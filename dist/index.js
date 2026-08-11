@@ -1,0 +1,12 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+let message = "Hello, TypeScript!";
+console.log(message);
+const username = "Sai Krishna";
+const age = 25;
+const isDeveloper = true;
+const address = "road 12 RCPM";
+console.log(username);
+console.log(age);
+console.log(isDeveloper);
+console.log(address);
