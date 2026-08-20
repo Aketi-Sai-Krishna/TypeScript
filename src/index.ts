@@ -312,122 +312,164 @@
 
 //Day 5
 
-type Address = {
+// type Address = {
+//    readonly id : number,
+//    houseNumber : number,
+//    street : string,
+//    city : string,
+//    state : string,
+//    country : string,
+//    pincode : number,
+//    landMark ?: string,
+//    defaultAddress : boolean
+// }
+
+// type Company = {
+//    readonly companyId : number,
+//    companyName : string,
+//    email : string,
+//    phoneNumber : string,
+//    website ?: string,
+//    industry : string,
+//    numberofEmployees : number,
+//    companyAddress : Address,
+//    companyStatus : "verified" | "NotVerified"
+// }
+
+
+// type User = {
+//   readonly id : number,
+//   firstName : string,
+//   lastName : string,
+//   email : string,
+//   phoneNumber : string,
+//   age : number,
+//   accountStatus : boolean,
+//   userRole : "admin" | "customer",
+//   profileImage ?: string,
+//   company ?: Company,      
+//   multipleAddress : Address[],  
+//   defaultAddress : Address,
+//   accountCreationDate : number
+// }
+
+// type ProductDimensions = {
+//   height : number,
+//   width : number,
+//   depth : number
+// }
+
+
+// type Product = {
+//   readonly id : number,
+//   productName : string,
+//   description : string,
+//   price : number,
+//   discountPrice ?: number,
+//   category : string,
+//   brand: string,
+//   stockquantity : number,
+//   inStock : boolean,
+//   images : string[],
+//   company : Company,
+//   productDimensions: ProductDimensions,
+//   Productweight : number,
+//   readonly SKU : string
+// }
+
+// type OrderItem = {
+//   product: Product;
+//   quantity: number;
+//   priceAtTimeOfPurchase: number;
+// };
+
+
+// type Order = {
+//     readonly id : number,
+//     customer : User,
+//     orderItem : OrderItem[],
+//     shippingAddress : Address,
+//     billingAddress : Address,
+//     totalProductPrice : number,
+//     discountAmount ?: number,
+//     shippingCharge : number,
+//     finalAmount : number,
+//     paymentStatus : "Done" | "Pending",
+//     orderStatus : "Delivered" | "NotDelivered",
+//     OrderCreationData : string,
+//     deliveryDate ?: string,
+//     trackingNumber ?: number
+// }
+
+
+// type APIResponse1<User> = {
+//    success : boolean,
+//    message : string,
+//    data : User[],
+//    error ?: null | boolean
+// }
+
+// type APIResponse2<Product> = {
+//    success : boolean,
+//    message : string,
+//    data : Product[],
+//    error ?: null | boolean
+// }
+
+// type APIResponse3<Order> = {
+//    success : boolean,
+//    message : string,
+//    data : Order[],
+//    error ?: null | boolean
+// }
+
+
+//Day 6
+
+interface Product {
    readonly id : number,
-   houseNumber : number,
-   street : string,
+   name : string,
+   price : number,
+   description ?: string,
+   category : string
+}
+
+interface Address {
    city : string,
    state : string,
-   country : string,
-   pincode : number,
-   landMark ?: string,
-   defaultAddress : boolean
+   country : string
 }
 
-type Company = {
-   readonly companyId : number,
-   companyName : string,
+interface Company {
+   id : number,
+   name : string,
+   address : Address
+}
+
+interface Employee {
+   id : number,
+   name : string,
    email : string,
-   phoneNumber : string,
-   website ?: string,
-   industry : string,
-   numberofEmployees : number,
-   companyAddress : Address,
-   companyStatus : "verified" | "NotVerified"
+   department : string
+}
+
+interface Manager extends Employee{
+   teamSize : number
+}
+
+interface User {
+   readonly id : number,
+   name : string,
+   price : number,
+   phone ?: string,
+   address : Address
+}
+
+interface Admin extends User{
+   role : string,
+   permissions : string[]
 }
 
 
-type User = {
-  readonly id : number,
-  firstName : string,
-  lastName : string,
-  email : string,
-  phoneNumber : string,
-  age : number,
-  accountStatus : boolean,
-  userRole : "admin" | "customer",
-  profileImage ?: string,
-  company ?: Company,      
-  multipleAddress : Address[],  
-  defaultAddress : Address,
-  accountCreationDate : number
-}
-
-type ProductDimensions = {
-  height : number,
-  width : number,
-  depth : number
-}
-
-
-type Product = {
-  readonly id : number,
-  productName : string,
-  description : string,
-  price : number,
-  discountPrice ?: number,
-  category : string,
-  brand: string,
-  stockquantity : number,
-  inStock : boolean,
-  images : string[],
-  company : Company,
-  productDimensions: ProductDimensions,
-  Productweight : number,
-  readonly SKU : string
-}
-
-type OrderItem = {
-  product: Product;
-  quantity: number;
-  priceAtTimeOfPurchase: number;
-};
-
-
-type Order = {
-    readonly id : number,
-    customer : User,
-    orderItem : OrderItem[],
-    shippingAddress : Address,
-    billingAddress : Address,
-    totalProductPrice : number,
-    discountAmount ?: number,
-    shippingCharge : number,
-    finalAmount : number,
-    paymentStatus : "Done" | "Pending",
-    orderStatus : "Delivered" | "NotDelivered",
-    OrderCreationData : string,
-    deliveryDate ?: string,
-    trackingNumber ?: number
-}
-
-
-type APIResponse1<User> = {
-   success : boolean,
-   message : string,
-   data : User[],
-   error ?: null | boolean
-}
-
-type APIResponse2<Product> = {
-   success : boolean,
-   message : string,
-   data : Product[],
-   error ?: null | boolean
-}
-
-type APIResponse3<Order> = {
-   success : boolean,
-   message : string,
-   data : Order[],
-   error ?: null | boolean
-}
-
-
-
-
-
-
-
-
-
+//Interface can be use for object structure and object realted 
+//type can be used for the union, intersections purposes
