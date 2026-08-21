@@ -426,50 +426,148 @@
 
 //Day 6
 
-interface Product {
-   readonly id : number,
-   name : string,
-   price : number,
-   description ?: string,
-   category : string
-}
+// interface Product {
+//    readonly id : number,
+//    name : string,
+//    price : number,
+//    description ?: string,
+//    category : string
+// }
 
-interface Address {
-   city : string,
-   state : string,
-   country : string
-}
+// interface Address {
+//    city : string,
+//    state : string,
+//    country : string
+// }
 
-interface Company {
-   id : number,
-   name : string,
-   address : Address
-}
+// interface Company {
+//    id : number,
+//    name : string,
+//    address : Address
+// }
 
-interface Employee {
-   id : number,
-   name : string,
-   email : string,
-   department : string
-}
+// interface Employee {
+//    id : number,
+//    name : string,
+//    email : string,
+//    department : string
+// }
 
-interface Manager extends Employee{
-   teamSize : number
-}
+// interface Manager extends Employee{
+//    teamSize : number
+// }
 
-interface User {
-   readonly id : number,
-   name : string,
-   price : number,
-   phone ?: string,
-   address : Address
-}
+// interface User {
+//    readonly id : number,
+//    name : string,
+//    price : number,
+//    phone ?: string,
+//    address : Address
+// }
 
-interface Admin extends User{
-   role : string,
-   permissions : string[]
-}
+// interface Admin extends User{
+//    role : string,
+//    permissions : string[]
+// }
 
 
 //Interface can be use for object structure and object realted 
 //type can be used for the union, intersections purposes
+
+type ApiStatus =  "loading" | "success" | "error"; //literal Unions
+
+let apiStatus: ApiStatus;
+
+apiStatus = "loading";
+apiStatus = "success";
+apiStatus = "error";
+
+
+type UserRole = "admin" | "user" | "manager" | "guest";
+
+let role:UserRole;
+
+role = "admin";
+role = "user";
+role = "manager";
+role = "guest";
+
+
+type OrderStatus = "pending" | "confirmed" | "shipped" | "delivered" | "cancelled";
+
+let orderStatus : OrderStatus;
+
+orderStatus = "pending";
+orderStatus = "cancelled";
+orderStatus = "confirmed";
+orderStatus = "shipped";
+orderStatus = "delivered";
+
+type PaymentStatus = "pending" | "paid" | "failed" | "refunded";
+
+let paymentStatus: PaymentStatus;
+
+paymentStatus = "pending";
+paymentStatus = "paid";
+paymentStatus = "failed";
+paymentStatus = "refunded";
+
+
+
+   // type ApiResponse  = |{status : "loading"}|{status: "success", data:string[]}| {status : "error", message: string}
+
+   // function handleRespone (response : ApiResponse){
+   //    switch(response.status){
+
+   //       case "loading":
+   //          console.log("Loading...");
+   //          break;
+   //       case "success":
+   //          console.log("Success...");
+   //          console.log(response.data);
+   //          break;
+   //       case "error":
+   //          console.log("Error...");
+   //          console.log(response.message);
+   //          break;
+   //    }
+   // }
+
+
+ async function getProducts() {
+    const response = await fetch("https://dummyjson.com/products");
+
+    const data = await response.json();
+
+    console.log(data);
+}
+
+getProducts();
+
+type Product = {
+    id: number;
+    title: string;
+    price: number;
+    description: string;
+    category: string;
+};
+
+type ProductResponse = {
+    products: Product[];
+    total: number;
+    skip: number;
+    limit: number;
+};
+
+type ApiResponse =
+    | {
+        status: "loading";
+      }
+    | {
+        status: "success";
+        data: ProductResponse;
+      }
+    | {
+        status: "error";
+        message: string;
+      };
